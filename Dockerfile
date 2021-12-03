@@ -12,8 +12,6 @@ RUN apk add --update --no-cache \
     git \
     ca-certificates && \
     pip install --upgrade awscli
-# Install serverless
-RUN npm install -g serverless
 # Install aliyun-cli
 RUN wget https://aliyuncli.alicdn.com/aliyun-cli-linux-3.0.2-amd64.tgz
 RUN tar -xvzf aliyun-cli-linux-3.0.2-amd64.tgz
@@ -26,7 +24,6 @@ ADD https://gosspublic.alicdn.com/ossutil/1.7.7/ossutil64 /usr/bin/ossutil
 RUN chmod a+x /usr/bin/ossutil
 
 COPY entrypoint.sh /
-RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Terraform
