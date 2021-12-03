@@ -11,8 +11,7 @@ RUN apk add --update --no-cache \
     sed \
     git \
     ca-certificates && \
-    pip install --upgrade awscli && \
-    apk -v --purge del py-pip
+    pip install --upgrade awscli
 # Install serverless
 RUN npm install -g serverless
 # Install aliyun-cli
@@ -41,3 +40,6 @@ RUN mv terraform /bin
 RUN rm -rf terraform.zip
 RUN rm -rf /var/cache/apk/*
 RUN apk add graphviz
+
+# Clean
+RUN apk -v --purge del py-pip
